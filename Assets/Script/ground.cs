@@ -26,27 +26,47 @@ public class ground : MonoBehaviour
 
     }
 
-    int color(int centerx, int centery, int radius, int color)
+    public int color(int centerx, int centery, float radius, int color)
     {
         int oppoColor = 0;
-        for (int i = centery - radius; i <= centery + radius; i++)
+        for (int i = centery - (int)radius - 1; i <= centery + (int)radius + 1; i++)
         {
             if (i >= 0 && i < gridlen)
             {
-                for (int j = centerx - radius; j <= centerx + radius; j++)
+                for (int j = centerx - (int)radius - 1; j <= centerx + (int)radius + 1; j++)
                 {
                     if (j >= 0 && j < gridlen && (j - centerx) * (j - centerx) + (i - centery) * (i - centery) <= radius * radius)
                     {
-                        if (colorgrid[i][j] != color && colorgrid[i][j] != 0)
+                        if (colorgrid[i][j] != color)
                         {
                             oppoColor++;
                         }
                         colorgrid[i][j] = color;
+                        
                     }
                 }
             }
 
         }
         return oppoColor;
+    }
+
+    public string toString()
+    {
+        string buffer = "";
+        for (int i = 0; i < gridlen; i++)
+        {
+            for (int j = 0; j < gridlen; j++)
+            {
+                buffer += colorgrid[i][j].ToString();
+            }
+            buffer += "\n";
+        }
+        return buffer;
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log(toString());
     }
 }
