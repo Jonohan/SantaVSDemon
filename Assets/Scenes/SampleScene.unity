@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 305580172}
+  player: {fileID: 0}
+  initialWidth: 1
+  changedWidth: 2.5
+  isBallCollide: 0
 --- !u!120 &526870866
 LineRenderer:
   serializedVersion: 2
@@ -801,6 +805,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 1882909516}
+  player: {fileID: 0}
+  initialWidth: 1
+  changedWidth: 2.5
+  isBallCollide: 0
 --- !u!1 &1291577894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1373,10 @@ PrefabInstance:
       objectReference: {fileID: 2058234101}
     - target: {fileID: 757087002763112334, guid: acbbe28afa568d846a5de627b3dd60c2, type: 3}
       propertyPath: ballColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757087002763112334, guid: acbbe28afa568d846a5de627b3dd60c2, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 757087002763112334, guid: acbbe28afa568d846a5de627b3dd60c2, type: 3}
