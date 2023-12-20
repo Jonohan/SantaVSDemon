@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ground : MonoBehaviour
 {
@@ -56,17 +57,26 @@ public class ground : MonoBehaviour
         string buffer = "";
         for (int i = 0; i < gridlen; i++)
         {
-            for (int j = 0; j < gridlen; j++)
+            for (int j = 0; j < gridlen - 1; j++)
             {
-                buffer += colorgrid[i][j].ToString();
+                buffer += colorgrid[i][j].ToString() + ",";
             }
-            buffer += "\n";
+            buffer += colorgrid[i][gridlen - 1].ToString() + "\n";
         }
         return buffer;
     }
 
     void OnDestroy()
     {
-        Debug.Log(toString());
+        WriteString(toString());
+    }
+
+    static void WriteString(string str)
+    {
+        string path = "./trace.txt";
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(str);
+        writer.Close();
     }
 }
