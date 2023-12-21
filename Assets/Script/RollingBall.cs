@@ -43,13 +43,15 @@ public class RollingBall : MonoBehaviour
 
             // Size change
             // transform.localScale = initialScale + Vector3.one * growthRate * Time.time;
-            int sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), 5 * (transform.localScale.x), ballColor);
+            int sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), 2 * (transform.localScale.x), ballColor);
+            
             //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString() + " " + (10 * (transform.position.x + 15)).ToString() + " " + (10 * (transform.position.z + 15)).ToString());
             float velo = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
-            Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
+            
             if (sizechange > 0)
             {
                 if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * growthRate * velo;
+                //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
             } else
             {
                 if (transform.localScale.x < 2) transform.localScale = transform.localScale + Vector3.one * growthRate * velo;
