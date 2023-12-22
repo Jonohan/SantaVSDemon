@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float deceleration = 3.0f;
     private float rotationSpeedIndex = 0.2f; // if you move slower, you rotate slower
 
+    [Header("Snowball Status Variables")]
     /*
      * Variable about if player snowballs
      */
@@ -29,6 +30,11 @@ public class PlayerController : MonoBehaviour
     private float P2RSpeedAdj = 1.0f;
     [SerializeField] private float moveAdjWhenSnowball = 0.6f; // You my adjust this index when snowball get bigger and bigger
     [SerializeField] private float rotateAdjWhenSnowball = 0.7f;
+
+    public RollingBall ballScript;
+
+    [Header("Player disable Variables")]
+    public bool isInvincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         isPlayerSnowball();
         PlayerMove();
+        pLayerReleaseBall();
     }
 
 
@@ -123,6 +130,43 @@ public class PlayerController : MonoBehaviour
             P2MSpeedAdj = 1.0f;
             P2RSpeedAdj = 1.0f;
         }
+    }
+
+    //P1 press E, P2 press right controll to release ball
+    public void pLayerReleaseBall()
+    {
+        if ((gameObject.tag == "Player1" && Input.GetKeyDown(KeyCode.E)) ||
+        (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl)))
+        {
+            ballScript.ReleaseBall();
+        }
+    }
+
+    // Make player invincible when player return
+    IEnumerator InvincibilityFlash()
+    {
+        isInvincible = true;
+
+        // Make player object flash
+        Renderer playerRenderer = GetComponent<Renderer>();
+
+        float duration = 3f;
+        float flashDuration = 0.1f;
+        while (duration > 0f)
+        {
+            playerRenderer.enabled = !playerRenderer.enabled;
+            duration -= flashDuration;
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        // Reset
+        playerRenderer.enabled = true;
+        isInvincible = false;
+    }
+
+    public void StartInvincibilityFlash()
+    {
+        StartCoroutine(InvincibilityFlash());
     }
 
 

@@ -18,6 +18,8 @@ public class RollingBall : MonoBehaviour
     private Vector3 initialScale;
     private float initialRadius;
 
+    public BallCollider ballCollider;
+
     void Start()
     {
         initialScale = transform.localScale;
@@ -60,6 +62,26 @@ public class RollingBall : MonoBehaviour
             {
                 if (transform.localScale.x < 2) transform.localScale = transform.localScale + Vector3.one * growthRate * velo;
             }
+        }
+    }
+
+    // Release ball
+    public void ReleaseBall()
+    {
+        // Push the ball in the opposite direction from the player's line
+        Vector3 direction = (transform.position - target.position).normalized;
+
+        // Ball won't follow player
+        target = null;
+
+        // Add force index
+        rb.AddForce(direction * 700.0f);
+
+        if (ballCollider != null)
+        {
+            
+            ballCollider.SetBallFree(true);
+            //Debug.Log("here");
         }
     }
 }
