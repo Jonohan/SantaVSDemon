@@ -101,4 +101,13 @@ public class BallCollider : MonoBehaviour
     {
         isBallFree = isFree;
     }
+
+    public void ballCollideWithWall()
+    {
+        if (isBallFree)
+        {
+            ball.GetComponent<RollingBall>().color(5);
+            ball.setActive(false);
+        }
+    }
 }
