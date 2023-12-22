@@ -1157,9 +1157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc62b1ceb8fbcf749892d8a50bffc5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  opponentPlayer: {fileID: 0}
-  opponentBallPrefab: {fileID: 0}
+  Player: {fileID: 1506255994}
+  opponentPlayer: {fileID: 2058234100}
+  opponentBallPrefab: {fileID: 305580172}
   explosionPrefab: {fileID: 4252762299465652573, guid: 00ffa493e6476594b87866bc61bd6722, type: 3}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &2058234100
@@ -1641,9 +1641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc62b1ceb8fbcf749892d8a50bffc5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  opponentPlayer: {fileID: 0}
-  opponentBallPrefab: {fileID: 0}
+  Player: {fileID: 2058234100}
+  opponentPlayer: {fileID: 1506255994}
+  opponentBallPrefab: {fileID: 1882909516}
   explosionPrefab: {fileID: 4252762299465652573, guid: 00ffa493e6476594b87866bc61bd6722, type: 3}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
