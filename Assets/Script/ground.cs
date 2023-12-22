@@ -38,7 +38,7 @@ public class ground : MonoBehaviour
                 {
                     if (j >= 0 && j < gridlen && (j - centerx) * (j - centerx) + (i - centery) * (i - centery) <= radius * radius)
                     {
-                        if (colorgrid[i][j] != color)
+                        if (colorgrid[i][j] != color && colorgrid[i][j] != 0)
                         {
                             oppoColor++;
                         }
@@ -68,7 +68,8 @@ public class ground : MonoBehaviour
 
     void OnDestroy()
     {
-        WriteString(toString());
+        //WriteString(toString());
+        Debug.Log(redWins());
     }
 
     static void WriteString(string str)
@@ -78,5 +79,26 @@ public class ground : MonoBehaviour
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine(str);
         writer.Close();
+    }
+
+    public bool redWins()
+    {
+        int red = 0;
+        int blue = 0;
+        for (int i = 0; i < gridlen; i++)
+        {
+            for (int j = 0; j < gridlen - 1; j++)
+            {
+                if (colorgrid[i][j] == 1)
+                {
+                    blue++;
+                }
+                else if (colorgrid[i][j] == 2)
+                {
+                    red++;
+                }
+            }
+        }
+        return red > blue;
     }
 }

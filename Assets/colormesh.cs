@@ -93,8 +93,9 @@ public class colormesh : MonoBehaviour
         
     }
 
-    public int color(int centerx, int centery, float radius, int color)
+    public int color(int centerx, int centery, float radius)
     {
+        
         for (int i = centery - (int)radius - 1; i <= centery + (int)radius + 1; i++)
         {
             if (i >= 0 && i < quality)
@@ -103,17 +104,14 @@ public class colormesh : MonoBehaviour
                 {
                     if (j >= 0 && j < quality && (j - centerx) * (j - centerx) + (i - centery) * (i - centery) <= radius * radius)
                     {
-                        //if (colorgrid[i][j] != color)
-                        //{
-                        //oppocolor.GetComponet<colormesh>().remove(centerx, centery, radius);
-                        //}
-                        //colorgrid[i][j] = color;
-                        vertices[i * (quality + 1) + j].y = maxHeight;
-                     }
+                        vertices[i * (quality + 1) + j] = new Vector3(vertices[i * (quality + 1) + j].x, maxHeight, vertices[i * (quality + 1) + j].z);
+                        //Debug.Log(vertices[i * (quality + 1) + j]);
+                    }
                 }
             }
 
         }
+        mesh.vertices = vertices;
         return 0;
     }
 
@@ -127,11 +125,12 @@ public class colormesh : MonoBehaviour
                 {
                     if (j >= 0 && j < quality && (j - centerx) * (j - centerx) + (i - centery) * (i - centery) <= radius * radius)
                     {
-                        vertices[i * (quality + 1) + j].y = minHeight;
+                        vertices[i * (quality + 1) + j] = new Vector3(vertices[i * (quality + 1) + j].x, minHeight, vertices[i * (quality + 1) + j].z);
                     }
                 }
             }
 
         }
+        mesh.vertices = vertices;
     }
 }
