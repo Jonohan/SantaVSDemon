@@ -18,7 +18,7 @@ public class colormesh : MonoBehaviour
     public int quality = 10;
     public float maxHeight = 0.6f;
     public float minHeight = 0f;
-
+    public float uv_scale = 10f;
     private Vector3[] vertices;
     private Mesh mesh;
     public GameObject oppocolor;
@@ -73,11 +73,17 @@ public class colormesh : MonoBehaviour
         }
 
         // generate mesh
+        Vector2[] uvs = new Vector2[vertices.Length];
 
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
 
         mesh = new Mesh();
         mesh.vertices = vertices;
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = new Vector2(vertices[i].x, vertices[i].z) / uv_scale;
+        }
+        mesh.uv = uvs;
         mesh.triangles = tris;
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
