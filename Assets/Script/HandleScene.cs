@@ -85,7 +85,7 @@ public static class HandleScene
 
     public static void LoadLevelNumber(int levelNumber)
     {
-        SceneManager.LoadScene(levelNumber - 1);
+        SceneManager.LoadScene(levelNumber);
     }
 
     public static GameObject FindSiblingGameObject(string name)
