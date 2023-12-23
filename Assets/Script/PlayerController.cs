@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     /*
      * Variable about if player snowballs
      */
-    [SerializeField] private bool isPlayer1Snowball = false;
-    [SerializeField] private bool isPlayer2Snowball = false;
+    private bool isPlayer1Snowball = true;
+    private bool isPlayer2Snowball = true;
     private float P1MSpeedAdj = 1.0f;
     private float P2MSpeedAdj = 1.0f;
     private float P1RSpeedAdj = 1.0f;
@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player disable Variables")]
     public bool isInvincible = false;
+
+    [Header("Drag prefab from ball pool")]
+    public GameObject ballPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -132,13 +135,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //P1 press E, P2 press right controll to release ball
+    //P1 press E, P2 press right controll to release ball (Only when player has ball)
     public void pLayerReleaseBall()
     {
-        if ((gameObject.tag == "Player1" && Input.GetKeyDown(KeyCode.E)) ||
-        (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl)))
+        if (gameObject.tag == "Player1" && Input.GetKeyDown(KeyCode.E))
         {
-            ballScript.ReleaseBall();
+            if (isPlayer1Snowball && ballScript != null)
+            {
+                // Release the ball if the player has one
+                ballScript.ReleaseBall();
+                isPlayer1Snowball = false;
+                ballScript = null; 
+            }
+            else if (!isPlayer1Snowball)
+            {
+                GenerateNewBall();
+                isPlayer1Snowball = true;
+            }
+        }
+
+        if (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl))
+        {
+
+            if (isPlayer2Snowball && ballScript != null)
+            {
+                // Release the ball if the player has one
+                ballScript.ReleaseBall();
+                isPlayer2Snowball = false;
+                ballScript = null;
+            }
+            else if (!isPlayer2Snowball)
+            {
+                GenerateNewBall();
+                isPlayer2Snowball = true;
+            }
         }
     }
 
@@ -146,6 +176,16 @@ public class PlayerController : MonoBehaviour
     IEnumerator InvincibilityFlash()
     {
         isInvincible = true;
+
+        // Reset snowball status when player returns
+        if (gameObject.tag == "Player1")
+        {
+            isPlayer1Snowball = false;
+        }
+        else if (gameObject.tag == "Player2")
+        {
+            isPlayer2Snowball = false;
+        }
 
         // Make player object flash
         Renderer playerRenderer = GetComponent<Renderer>();
@@ -169,6 +209,37 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(InvincibilityFlash());
     }
 
+    // When Player enter the collider of ball, pick up the ball
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("SnowBall") && !isPlayer1Snowball)
+        {
+            other.gameObject.GetComponent<RollingBall>()?.PickUp(transform);
+            isPlayer1Snowball = true;
+        }
+        else if (other.gameObject.CompareTag("LavaBall") && !isPlayer2Snowball)
+        {
+            other.gameObject.GetComponent<RollingBall>()?.PickUp(transform);
+            isPlayer2Snowball = true;
+        }
+    }
 
+    private void GenerateNewBall()
+    {
+        GameObject newBall = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        newBall.transform.localScale = Vector3.one;
+        RollingBall newBallScript = newBall.GetComponent<RollingBall>();
+        if (newBallScript != null)
+        {
+            Rigidbody rb = newBall.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+            }
+
+            newBallScript.PickUp(transform);
+            ballScript = newBallScript;
+        }
+    }
 }
 

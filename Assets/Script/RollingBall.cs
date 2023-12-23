@@ -6,6 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class RollingBall : MonoBehaviour
 {
     public Transform target;
+    private GameObject targetGameObject;// use to track the target
+
     public int ballColor;
     public Vector3 initialOffset = new Vector3(0, 0, 1.2f);
     public float initialRotationSpeed = 100.0f;
@@ -18,7 +20,9 @@ public class RollingBall : MonoBehaviour
     private Vector3 initialScale;
     private float initialRadius;
 
+    public bool isPickedUp = false;
     public BallCollider ballCollider;
+
 
     void Start()
     {
@@ -29,8 +33,9 @@ public class RollingBall : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+        if (target != null && target.gameObject.activeInHierarchy)
         {
+            isPickedUp = true;
             // ball is on local offset of player, as it get bigger it get away from player
             float currentRadius = transform.localScale.x / 2.0f;
             float offsetIncrease = currentRadius - initialRadius;
@@ -44,6 +49,22 @@ public class RollingBall : MonoBehaviour
             // Rotation base on player's direction
             Vector3 relativeXAxis = target.right;
             transform.RotateAround(target.position, relativeXAxis, rotationSpeed * Time.deltaTime);
+
+        }
+        else if (target == null && targetGameObject != null && !targetGameObject.activeInHierarchy)
+        {
+            isPickedUp = false;
+            if (gameObject != null)
+            {
+                // Scale is 1
+                transform.localScale = Vector3.one;
+            }
+
+            if (rb != null)
+            {
+                // Cannot move until player touch it
+                rb.isKinematic = !isPickedUp;
+            }
         }
         color(2);
     }
@@ -51,6 +72,8 @@ public class RollingBall : MonoBehaviour
     // Release ball
     public void ReleaseBall()
     {
+        isPickedUp = false;
+
         // Push the ball in the opposite direction from the player's line
         Vector3 direction = (transform.position - target.position).normalized;
 
@@ -58,6 +81,7 @@ public class RollingBall : MonoBehaviour
         target = null;
 
         // Add force index
+        rb.isKinematic = false;
         rb.AddForce(direction * 700.0f);
 
         if (ballCollider != null)
@@ -93,6 +117,38 @@ public class RollingBall : MonoBehaviour
     public void ballShrink()
     {
         transform.localScale /= 2;
+    }
+
+    public void PickUp(Transform playerTransform)
+    {
+        target = playerTransform;
+        isPickedUp = true;
+
+        // Check the player tag and update the ballScript reference in the corresponding PlayerController
+        PlayerController playerController = playerTransform.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            if (playerTransform.tag == "Player1")
+            {
+                playerController.ballScript = this;
+            }
+            else if (playerTransform.tag == "Player2")
+            {
+                playerController.ballScript = this;
+            }
+        }
+    }
+
+    // To find if player is diable or not
+    bool IsPlayerInScene(string playerTag)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        return player != null && player.activeInHierarchy;
+    }
+
+    public void ballShrink(int level)
+    {
+        transform.localScale /= level;
     }
 }
 

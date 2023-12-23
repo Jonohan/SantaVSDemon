@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 4306270025451944112}
   - component: {fileID: 965062153243054949}
   - component: {fileID: 7122811967066953581}
+  - component: {fileID: -193422933737888829}
   m_Layer: 0
   m_Name: LavaBall
-  m_TagString: Untagged
+  m_TagString: LavaBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 965062153243054949}
   colormesh: {fileID: 0}
   oppocolor: {fileID: 0}
+  ballCollider: {fileID: 0}
 --- !u!54 &965062153243054949
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,4 +173,24 @@ MonoBehaviour:
   opponentPlayer: {fileID: 0}
   explosionPrefab: {fileID: 4252762299465652573, guid: 00ffa493e6476594b87866bc61bd6722, type: 3}
   offset: {x: 0, y: 0, z: 0}
-  isBallFree: 1
+--- !u!135 &-193422933737888829
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079124888913632652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

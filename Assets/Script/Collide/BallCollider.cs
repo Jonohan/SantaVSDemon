@@ -5,13 +5,14 @@ using UnityEngine;
 public class BallCollider : MonoBehaviour
 {
     //CollisionAction(Snowball, object collide with snow ball)
-    public delegate void CollisionAction(GameObject ball, Collider other);
+    public delegate void CollisionAction(GameObject ball, GameObject Player, GameObject opponent, Collider other, bool isBallFree);
     public static event CollisionAction OnCollision;
 
     [Header("Player disable Variables")]
     public GameObject Player;
     public GameObject opponentPlayer;
-    public GameObject opponentBallPrefab;
+    //[Header("[Drag the prefab from Hierachy]")]
+    //public GameObject opponentBallPrefab;
 
     [Header("Explosion Variables")]
     public GameObject explosionPrefab;
@@ -32,7 +33,7 @@ public class BallCollider : MonoBehaviour
         {
             if (collision.gameObject != Player && collision.gameObject.tag != "Ground")
             {
-                OnCollision(gameObject, collision.collider);
+                OnCollision(gameObject, Player, opponentPlayer, collision.collider, isBallFree);
 
                 // Create explosion animation where the ball collide
                 GameObject explosionInstance = Instantiate(explosionPrefab, transform.position + offset, Quaternion.identity);
@@ -48,52 +49,13 @@ public class BallCollider : MonoBehaviour
                 mainModule.startSize = new ParticleSystem.MinMaxCurve(1.5f* ballScale); 
 
                 Destroy(explosionInstance, 2f);
-                //Debug.Log("Collide with others");
 
-                if (collision.gameObject == opponentPlayer)
-                {
-                    StartCoroutine(HandleOpponentCollision(opponentPlayer));
-                }
+                //ballCollideWithWall();
+
+                ballCollideWithWall();
+
             }
-        }
-        
-    }
-
-    IEnumerator HandleOpponentCollision(GameObject opponent)
-    {
-        if (isBallFree)
-        {
-            // Get 2 player current position
-            Vector3 playerPosition = Player.transform.position;
-            Vector3 opponentPosition = opponent.transform.position;
-
-
-
-            // Remove the player was collided with ball
-            opponent.SetActive(false);
-
-            // Create 2 ball of the dead player, on the line between this player and his opponent
-            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.25f, 0.75f)));
-            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.25f, 0.75f)));
-
-
-            // Time interval of return
-            yield return new WaitForSeconds(5f);
-
-            opponent.SetActive(true);
-            //Get opponent function
-            PlayerController playerController = opponent.GetComponent<PlayerController>();
-            if (playerController != null)
-            {
-                playerController.StartInvincibilityFlash();
-            }
-        }
-    }
-
-    // Create a new ball
-    void InstantiateBallAtPosition(Vector3 position)
-    {
-        Instantiate(opponentBallPrefab, position, Quaternion.identity);
+        }  
     }
 
     // Set ball free
@@ -102,12 +64,38 @@ public class BallCollider : MonoBehaviour
         isBallFree = isFree;
     }
 
+    /*    public void ballCollideWithWall()
+        {
+            if (isBallFree)
+            {
+                GetComponent<RollingBall>().color(5);
+                gameObject.SetActive(false);
+            }
+        }*/
+
     public void ballCollideWithWall()
     {
         if (isBallFree)
         {
-            //GetComponent<RollingBall>().color(5);
-            //SetActive(false);
+            GetComponent<RollingBall>().color(5);
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void ballCollideWithBall(Collision ball)
+    {
+        if (isBallFree) 
+        {
+            if (ball.gameObject.GetComponent<BallCollider>().isBallFree)
+            {
+                ball.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            } else
+            {
+                GetComponent<RollingBall>().color(5);
+                gameObject.SetActive(false);
+                ball.gameObject.GetComponent<RollingBall>().ballShrink(2);
+            }
         }
     }
 }

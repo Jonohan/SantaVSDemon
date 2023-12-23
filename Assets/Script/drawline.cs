@@ -39,16 +39,7 @@ public class drawline : MonoBehaviour
         SnowballCollide();
     }
 
-    // listen the onCollision event
-    void OnEnable()
-    {
-        BallCollider.OnCollision += HandleCollision;
-    }
 
-    void OnDisable()
-    {
-        BallCollider.OnCollision -= HandleCollision;
-    }
 
     void SnowballCollide()
     {
@@ -67,11 +58,4 @@ public class drawline : MonoBehaviour
         lineRenderer.endWidth = initialWidth;
     }
 
-    private void HandleCollision(GameObject ball, Collider other)
-    {
-        if (other.gameObject == player)
-        {
-            isBallCollide = true;
-        }
-    }
 }
