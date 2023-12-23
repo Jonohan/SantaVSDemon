@@ -123,12 +123,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   ballColor: 0
-  initialOffset: {x: 0, y: 0, z: 1.4}
   initialRotationSpeed: 100
   ground: {fileID: 0}
   rb: {fileID: 965062153243054949}
   colormesh: {fileID: 0}
   oppocolor: {fileID: 0}
+  isPickedUp: 0
   ballCollider: {fileID: 0}
 --- !u!54 &965062153243054949
 Rigidbody:

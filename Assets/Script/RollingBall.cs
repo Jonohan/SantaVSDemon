@@ -9,9 +9,10 @@ public class RollingBall : MonoBehaviour
     private GameObject targetGameObject;// use to track the target
 
     public int ballColor;
-    public Vector3 initialOffset = new Vector3(0, 0, 1.2f);
+    private Vector3 initialOffset = new Vector3(0, -0.5f, 1.2f);
     public float initialRotationSpeed = 100.0f;
-    private float growthRate = 0.01f;
+    private float growthRate = 0.03f;
+    private float shrinkRate = 0.01f;
     public GameObject ground;
     public Rigidbody rb;
     public GameObject colormesh;
@@ -67,6 +68,12 @@ public class RollingBall : MonoBehaviour
             Vector3 relativeXAxis = target.right;
             transform.RotateAround(target.position, relativeXAxis, rotationSpeed * Time.deltaTime);
 
+            // Prevent the ball rotation from interuption 
+            if (rb != null)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+
         }
         else if (target == null && targetGameObject != null && !targetGameObject.activeInHierarchy)
         {
@@ -99,7 +106,8 @@ public class RollingBall : MonoBehaviour
         target = null;
 
         // Add force index
-        rb.isKinematic = false;
+
+        rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(direction * 700.0f);
 
         if (ballCollider != null)
@@ -123,7 +131,7 @@ public class RollingBall : MonoBehaviour
         //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
         if (sizechange > 0)
         {
-            if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * growthRate;
+            if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * shrinkRate;
         }
         else if (sizechange < -0.95f)
         {
