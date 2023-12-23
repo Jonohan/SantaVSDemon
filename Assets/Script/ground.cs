@@ -78,7 +78,7 @@ public class ground : MonoBehaviour
     void OnDestroy()
     {
         //WriteString(toString());
-        Debug.Log(redWins());
+        //Debug.Log(redWins());
     }
 
     static void WriteString(string str)
@@ -90,13 +90,29 @@ public class ground : MonoBehaviour
         writer.Close();
     }
 
-    public bool redWins()
+    public float redPerc()
+    {
+        int red = 0;
+        for (int i = 0; i < gridlen; i++)
+        {
+            for (int j = 0; j < gridlen; j++)
+            {
+                if (colorgrid[i][j] == 2)
+                {
+                    red++;
+                }
+            }
+        }
+        return red;
+    }
+
+    public float bluePerc()
     {
         int red = 0;
         int blue = 0;
         for (int i = 0; i < gridlen; i++)
         {
-            for (int j = 0; j < gridlen - 1; j++)
+            for (int j = 0; j < gridlen; j++)
             {
                 if (colorgrid[i][j] == 1)
                 {
@@ -108,6 +124,6 @@ public class ground : MonoBehaviour
                 }
             }
         }
-        return red > blue;
+        return red;
     }
 }
