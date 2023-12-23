@@ -19,6 +19,8 @@ public class RollingBall : MonoBehaviour
 
     private Vector3 initialScale;
     private float initialRadius;
+    private Vector3 prevPosition;
+    private float minDist = 0.1f;
 
     public bool isPickedUp = false;
     public BallCollider ballCollider;
@@ -28,11 +30,21 @@ public class RollingBall : MonoBehaviour
     {
         initialScale = transform.localScale;
         initialRadius = initialScale.x / 2.0f;
+        prevPosition = transform.position;
+        prevPosition.y = 0.5f;
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
+        Vector3 currentPosition = transform.position;
+        currentPosition.y = 0.5f;
+
+        if (Vector3.Distance(currentPosition, prevPosition) > minDist)
+        {
+            prevPosition = currentPosition;
+            color(2);
+        }
         if (target != null && target.gameObject.activeInHierarchy)
         {
             isPickedUp = true;
@@ -66,7 +78,7 @@ public class RollingBall : MonoBehaviour
                 rb.isKinematic = !isPickedUp;
             }
         }
-        color(2);
+        
     }
 
     // Release ball
@@ -96,21 +108,20 @@ public class RollingBall : MonoBehaviour
     {
         // Size change
         // transform.localScale = initialScale + Vector3.one * growthRate * Time.time;
-        int sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), radius * (transform.localScale.x), ballColor);
+        float sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), radius * (transform.localScale.x), ballColor);
         colormesh.GetComponent<colormesh>().color((int)(6 * (transform.position.x + 15)), (int)(6 * (transform.position.z + 15)), radius * (transform.localScale.x));
         oppocolor.GetComponent<colormesh>().remove((int)(6 * (transform.position.x + 15)), (int)(6 * (transform.position.z + 15)), radius * (transform.localScale.x));
 
         //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString() + " " + (10 * (transform.position.x + 15)).ToString() + " " + (10 * (transform.position.z + 15)).ToString());
-        float velo = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
-
+        //float velo = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
+        Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
         if (sizechange > 0)
         {
-            if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * growthRate * velo;
-            //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
+            if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * growthRate;
         }
-        else
+        else if (sizechange < -0.95f)
         {
-            if (transform.localScale.x < 2) transform.localScale = transform.localScale + Vector3.one * growthRate * velo;
+            if (transform.localScale.x < 3) transform.localScale = transform.localScale + Vector3.one * growthRate;
         }
     }
 

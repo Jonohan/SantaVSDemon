@@ -288,6 +288,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4306270025451944112, guid: a637e7851525d8e4b94b20759dd1633f, type: 3}
+      propertyPath: ballColor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306270025451944112, guid: a637e7851525d8e4b94b20759dd1633f, type: 3}
       propertyPath: colormesh
       value: 
       objectReference: {fileID: 1418734629}
@@ -1216,6 +1220,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4205306680421070025, guid: a35073ec217feeb429de0ddf2e3aec61, type: 3}
+      propertyPath: ballColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205306680421070025, guid: a35073ec217feeb429de0ddf2e3aec61, type: 3}
       propertyPath: colormesh
       value: 
       objectReference: {fileID: 889575409}
@@ -1409,13 +1417,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 15, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &968942341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,12 +1744,11 @@ MonoBehaviour:
   currentSpeed: 0
   acceleration: 3
   deceleration: 3
-  isPlayer1Snowball: 0
-  isPlayer2Snowball: 0
   moveAdjWhenSnowball: 0.6
   rotateAdjWhenSnowball: 0.7
   ballScript: {fileID: 960069284}
   isInvincible: 0
+  ballPrefab: {fileID: 605142360}
 --- !u!1 &1771525434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,6 +1898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa96533773b99fe4791bc6c48f18c3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snowballPrefab: {fileID: 898454450}
+  lavaballPrefab: {fileID: 605142360}
 --- !u!1 &2058234100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,12 +2026,11 @@ MonoBehaviour:
   currentSpeed: 0
   acceleration: 3
   deceleration: 3
-  isPlayer1Snowball: 0
-  isPlayer2Snowball: 0
   moveAdjWhenSnowball: 0.6
   rotateAdjWhenSnowball: 0.7
   ballScript: {fileID: 778373779}
   isInvincible: 0
+  ballPrefab: {fileID: 898454450}
 --- !u!1001 &4087746615641513138
 PrefabInstance:
   m_ObjectHideFlags: 0

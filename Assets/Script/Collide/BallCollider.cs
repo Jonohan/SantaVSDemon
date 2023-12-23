@@ -77,7 +77,7 @@ public class BallCollider : MonoBehaviour
     {
         if (isBallFree)
         {
-            GetComponent<RollingBall>().color(5);
+            GetComponent<RollingBall>().color(10);
             gameObject.SetActive(false);
         }
     }
@@ -92,7 +92,7 @@ public class BallCollider : MonoBehaviour
                 gameObject.SetActive(false);
             } else
             {
-                GetComponent<RollingBall>().color(5);
+                GetComponent<RollingBall>().color(10);
                 gameObject.SetActive(false);
                 ball.gameObject.GetComponent<RollingBall>().ballShrink(2);
             }

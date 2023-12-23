@@ -27,9 +27,11 @@ public class ground : MonoBehaviour
 
     }
 
-    public int color(int centerx, int centery, float radius, int color)
+    public float color(int centerx, int centery, float radius, int color)
     {
-        int oppoColor = 0;
+        float oppoColor = 0f;
+        int thisColor = 0;
+        float total = 0;
         for (int i = centery - (int)radius - 1; i <= centery + (int)radius + 1; i++)
         {
             if (i >= 0 && i < gridlen)
@@ -38,16 +40,23 @@ public class ground : MonoBehaviour
                 {
                     if (j >= 0 && j < gridlen && (j - centerx) * (j - centerx) + (i - centery) * (i - centery) <= radius * radius)
                     {
-                        if (colorgrid[i][j] != color && colorgrid[i][j] != 0)
+                        if (colorgrid[i][j] == color)
+                        {
+                            thisColor++;
+                        }else if ( colorgrid[i][j] != 0)
                         {
                             oppoColor++;
                         }
                         colorgrid[i][j] = color;
-                        
+                        total++;
                     }
                 }
             }
 
+        }
+        if (oppoColor == 0)
+        {
+            oppoColor = - thisColor/total;
         }
         return oppoColor;
     }
