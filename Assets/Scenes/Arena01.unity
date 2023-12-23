@@ -5330,7 +5330,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -12195,6 +12195,7 @@ GameObject:
   - component: {fileID: 1506255997}
   - component: {fileID: 1506255996}
   - component: {fileID: 1506255999}
+  - component: {fileID: 1506256000}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player2
@@ -12313,6 +12314,33 @@ MonoBehaviour:
   ballScript: {fileID: 960069284}
   isInvincible: 0
   ballPrefab: {fileID: 605142360}
+--- !u!54 &1506256000
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506255994}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &1520700712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14028,6 +14056,10 @@ PrefabInstance:
     - target: {fileID: 3871198239056115477, guid: 5162da3d3ffcaad4db4e8b18c1a8d076, type: 3}
       propertyPath: m_Name
       value: Anvil1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033171113973326770, guid: 5162da3d3ffcaad4db4e8b18c1a8d076, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16698,6 +16730,7 @@ GameObject:
   - component: {fileID: 2058234103}
   - component: {fileID: 2058234102}
   - component: {fileID: 2058234105}
+  - component: {fileID: 2058234106}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -16816,6 +16849,33 @@ MonoBehaviour:
   ballScript: {fileID: 778373779}
   isInvincible: 0
   ballPrefab: {fileID: 898454450}
+--- !u!54 &2058234106
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058234100}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &2062016263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17436,6 +17496,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6684183043736488833, guid: a35073ec217feeb429de0ddf2e3aec61, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 8090301345737612225, guid: a35073ec217feeb429de0ddf2e3aec61, type: 3}
       propertyPath: m_Name
       value: SnowBall
@@ -17453,6 +17517,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 965062153243054949, guid: a637e7851525d8e4b94b20759dd1633f, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 1079124888913632652, guid: a637e7851525d8e4b94b20759dd1633f, type: 3}
       propertyPath: m_Name
       value: LavaBall
