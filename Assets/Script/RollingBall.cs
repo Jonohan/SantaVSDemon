@@ -87,7 +87,8 @@ public class RollingBall : MonoBehaviour
             if (rb != null)
             {
                 // Cannot move until player touch it
-                rb.isKinematic = !isPickedUp;
+                //rb.isKinematic = !isPickedUp;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
         
@@ -157,6 +158,7 @@ public class RollingBall : MonoBehaviour
                 playerController.ballScript = this;
             }
         }
+
     }
 
     // To find if player is diable or not

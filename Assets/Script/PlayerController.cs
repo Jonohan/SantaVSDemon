@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
             P2MSpeedAdj = moveAdjWhenSnowball;
             P2RSpeedAdj = rotateAdjWhenSnowball;
         }
-        else if (!isPlayer1Snowball)
+        else if (!isPlayer2Snowball)
         {
             P2MSpeedAdj = 1.0f;
             P2RSpeedAdj = 1.0f;
@@ -203,11 +203,13 @@ public class PlayerController : MonoBehaviour
                 ballScript.ReleaseBall();
                 isPlayer1Snowball = false;
                 ballScript = null;
+                Debug.Log("isPlayer1Snowball " + isPlayer1Snowball);
             }
             else if (!isPlayer1Snowball)
             {
                 GenerateNewBall();
                 isPlayer1Snowball = true;
+                Debug.Log("isPlayer1Snowball " + isPlayer1Snowball);
             }
         }
 
@@ -220,11 +222,13 @@ public class PlayerController : MonoBehaviour
                 ballScript.ReleaseBall();
                 isPlayer2Snowball = false;
                 ballScript = null;
+                Debug.Log("isPlayer2Snowball " + isPlayer2Snowball);
             }
             else if (!isPlayer2Snowball)
             {
                 GenerateNewBall();
                 isPlayer2Snowball = true;
+                Debug.Log("isPlayer2Snowball " + isPlayer2Snowball);
             }
         }
     }

@@ -8,6 +8,11 @@ public class ColliderManager : MonoBehaviour
     public GameObject snowballPrefab; 
     public GameObject lavaballPrefab;
 
+    [Header("Explosion Variables")]
+    public GameObject playerRevivePrefab;
+    private Vector3 reviveOffset = new Vector3(0, -10, 0);
+    private Vector3 explosionOffset = new Vector3(0, 0, 0);
+
     void OnEnable()
     {
         BallCollider.OnCollision += HandleCollision;
@@ -31,39 +36,67 @@ public class ColliderManager : MonoBehaviour
 
     IEnumerator HandleOpponentCollision(GameObject ball, GameObject player, GameObject opponent , bool ifBallFree)
     {
+
         if (ifBallFree)
         {
-            // Get 2 player current position
-            Vector3 playerPosition = player.transform.position;
-            Vector3 opponentPosition = opponent.transform.position;
-
-
-
-            // Remove the player was collided with ball
-            opponent.SetActive(false);
-            Debug.Log("Disabling opponent: " + opponent.name);
-
-            // Create 2 ball of the dead player, on the line between this player and his opponent
-            GameObject opponentPrefab = DetermineOpponentPrefab(ball);
-            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.3f, 0.8f)), opponentPrefab);
-            
-
-
-            // Time interval of return
-            yield return new WaitForSeconds(5f);
-
-
-            opponent.SetActive(true);
-            //Get opponent function
             PlayerController playerController = opponent.GetComponent<PlayerController>();
-            if (playerController != null)
+            /*            // Get 2 player current position
+                        Vector3 playerPosition = player.transform.position;
+                        Vector3 opponentPosition = opponent.transform.position;*/
+
+            if (!playerController.isInvincible) 
             {
-                playerController.StartInvincibilityFlash();
+                // Remove the player was collided with ball
+                opponent.SetActive(false);
+                Debug.Log("Disabling opponent: " + opponent.name);
+
+                /*            // Create 2 ball of the dead player, on the line between this player and his opponent
+                            GameObject opponentPrefab = DetermineOpponentPrefab(ball);
+                            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.3f, 0.8f)), opponentPrefab);*/
+
+                // Time interval of return
+                yield return new WaitForSeconds(5f);
+
+
+                opponent.SetActive(true);
+                //Get opponent function
+                //PlayerController playerController = opponent.GetComponent<PlayerController>();
+                if (playerController != null)
+                {
+                    playerController.StartInvincibilityFlash();
+                    Instantiate(playerRevivePrefab, opponent.transform.position + explosionOffset, Quaternion.identity);
+
+                    // Color the ground (Create new ball and destroy)
+                    GameObject ballToInstantiate = null;
+                    if (opponent.tag == "Player1")
+                    {
+                        ballToInstantiate = snowballPrefab;
+                    }
+                    else if (opponent.tag == "Player2")
+                    {
+                        ballToInstantiate = lavaballPrefab;
+                    }
+
+                    if (ballToInstantiate != null)
+                    {
+                        GameObject instantiatedBall = Instantiate(ballToInstantiate, opponent.transform.position + reviveOffset, Quaternion.identity);
+                        instantiatedBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+                        Rigidbody rb = instantiatedBall.GetComponent<Rigidbody>();
+                        rb.constraints = RigidbodyConstraints.FreezePositionY;
+
+                        RollingBall rollingBallScript = instantiatedBall.GetComponent<RollingBall>();
+                        rollingBallScript.color(15);
+
+                        Destroy(instantiatedBall, 0.1f);
+                    }
+                }
             }
+      
         }
     }
 
-    // Create a new ball
+/*    // Create a new ball
     void InstantiateBallAtPosition(Vector3 position, GameObject prefab)
     {
         GameObject newBall =  Instantiate(prefab, position, Quaternion.identity);
@@ -99,7 +132,7 @@ public class ColliderManager : MonoBehaviour
                 rb.isKinematic = !rollingBallScript.isPickedUp;
             }
         }      
-    }
+    }*/
 
     // Find each ball's opponent
     GameObject DetermineOpponentPrefab(GameObject ball)
