@@ -90,9 +90,9 @@ public class RollingBall : MonoBehaviour
         }
     }
 
-    public void ballShrink()
+    public void ballShrink(int level)
     {
-        transform.localScale /= 2;
+        transform.localScale /= level;
     }
 }
 

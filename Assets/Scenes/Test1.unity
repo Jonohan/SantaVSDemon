@@ -920,7 +920,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889575413}
-  - component: {fileID: 889575412}
   - component: {fileID: 889575411}
   - component: {fileID: 889575410}
   m_Layer: 0
@@ -994,18 +993,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &889575412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889575409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbc44223293e74408c968e4a789b06c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &889575413
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,7 +1234,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1418734630}
   - component: {fileID: 1418734633}
-  - component: {fileID: 1418734632}
   - component: {fileID: 1418734631}
   m_Layer: 0
   m_Name: lavamesh
@@ -1293,18 +1279,6 @@ MonoBehaviour:
   minHeight: 0
   uv_scale: 10
   oppocolor: {fileID: 889575409}
---- !u!114 &1418734632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418734629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbc44223293e74408c968e4a789b06c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1418734633
 MeshRenderer:
   m_ObjectHideFlags: 0

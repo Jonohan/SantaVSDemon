@@ -106,8 +106,25 @@ public class BallCollider : MonoBehaviour
     {
         if (isBallFree)
         {
-            //GetComponent<RollingBall>().color(5);
-            //SetActive(false);
+            GetComponent<RollingBall>().color(5);
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void ballCollideWithBall(Collision ball)
+    {
+        if (isBallFree) 
+        {
+            if (ball.gameObject.GetComponent<BallCollider>().isBallFree)
+            {
+                ball.gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            } else
+            {
+                GetComponent<RollingBall>().color(5);
+                gameObject.SetActive(false);
+                ball.gameObject.GetComponent<RollingBall>().ballShrink(2);
+            }
         }
     }
 }
