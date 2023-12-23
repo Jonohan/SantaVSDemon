@@ -25,4 +25,14 @@ public class ButtonCtrl : MonoBehaviour
     {
         HandleScene.LoadHome();
     }
+
+    public void PauseGame()
+    {
+        HandleScene.PauseGame();
+    }
+
+    public void ResumeGame()
+    {
+        HandleScene.ResumeGame();
+    }
 }
