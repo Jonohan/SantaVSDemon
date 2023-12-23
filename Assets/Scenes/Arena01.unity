@@ -15604,6 +15604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snowballPrefab: {fileID: 898454450}
   lavaballPrefab: {fileID: 605142360}
+  playerRevivePrefab: {fileID: 7079942973770865266, guid: b7ecb640ae547ad46b74988fed186544, type: 3}
 --- !u!1001 &1945641221
 PrefabInstance:
   m_ObjectHideFlags: 0
