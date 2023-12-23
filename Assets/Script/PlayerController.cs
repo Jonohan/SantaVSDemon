@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [Header("Drag prefab from ball pool")]
     public GameObject ballPrefab;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         isPlayerSnowball();
         PlayerMove();
         pLayerReleaseBall();
+        CheckBallStatus();
     }
 
 
@@ -135,42 +138,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //P1 press E, P2 press right controll to release ball (Only when player has ball)
-    public void pLayerReleaseBall()
-    {
-        if (gameObject.tag == "Player1" && Input.GetKeyDown(KeyCode.E))
-        {
-            if (isPlayer1Snowball && ballScript != null)
-            {
-                // Release the ball if the player has one
-                ballScript.ReleaseBall();
-                isPlayer1Snowball = false;
-                ballScript = null; 
-            }
-            else if (!isPlayer1Snowball)
-            {
-                GenerateNewBall();
-                isPlayer1Snowball = true;
-            }
-        }
-
-        if (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl))
-        {
-
-            if (isPlayer2Snowball && ballScript != null)
-            {
-                // Release the ball if the player has one
-                ballScript.ReleaseBall();
-                isPlayer2Snowball = false;
-                ballScript = null;
-            }
-            else if (!isPlayer2Snowball)
-            {
-                GenerateNewBall();
-                isPlayer2Snowball = true;
-            }
-        }
-    }
+    
 
     // Make player invincible when player return
     IEnumerator InvincibilityFlash()
@@ -224,10 +192,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //P1 press E, P2 press right controll to release ball (Only when player has ball)
+    public void pLayerReleaseBall()
+    {
+        if (gameObject.tag == "Player1" && Input.GetKeyDown(KeyCode.E))
+        {
+            if (isPlayer1Snowball && ballScript != null)
+            {
+                // Release the ball if the player has one
+                ballScript.ReleaseBall();
+                isPlayer1Snowball = false;
+                ballScript = null;
+            }
+            else if (!isPlayer1Snowball)
+            {
+                GenerateNewBall();
+                isPlayer1Snowball = true;
+            }
+        }
+
+        if (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl))
+        {
+
+            if (isPlayer2Snowball && ballScript != null)
+            {
+                // Release the ball if the player has one
+                ballScript.ReleaseBall();
+                isPlayer2Snowball = false;
+                ballScript = null;
+            }
+            else if (!isPlayer2Snowball)
+            {
+                GenerateNewBall();
+                isPlayer2Snowball = true;
+            }
+        }
+    }
+
     private void GenerateNewBall()
     {
         GameObject newBall = Instantiate(ballPrefab, transform.position, Quaternion.identity);
-        newBall.transform.localScale = Vector3.one;
+        //newBall.transform.localScale = Vector3.one;
         RollingBall newBallScript = newBall.GetComponent<RollingBall>();
         if (newBallScript != null)
         {
@@ -237,8 +242,35 @@ public class PlayerController : MonoBehaviour
                 rb.isKinematic = false;
             }
 
+            // Set ball color of mesh
+            if (gameObject.tag == "Player1")
+            {
+                newBallScript.ballColor = 1;
+            }
+            else if (gameObject.tag == "Player2")
+            {
+                newBallScript.ballColor = 2;
+            }
+
             newBallScript.PickUp(transform);
             ballScript = newBallScript;
+        }
+    }
+
+    private void CheckBallStatus()
+    {
+        if ((gameObject.tag == "Player1" && (ballScript == null || !ballScript.isPickedUp)) ||
+                (gameObject.tag == "Player2" && (ballScript == null || !ballScript.isPickedUp)))
+        {
+            if (gameObject.tag == "Player1")
+            {
+                isPlayer1Snowball = false;
+            }
+            else if (gameObject.tag == "Player2")
+            {
+                isPlayer2Snowball = false;
+            }
+            ballScript = null;
         }
     }
 }

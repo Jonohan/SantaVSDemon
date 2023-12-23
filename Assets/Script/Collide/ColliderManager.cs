@@ -45,7 +45,7 @@ public class ColliderManager : MonoBehaviour
 
             // Create 2 ball of the dead player, on the line between this player and his opponent
             GameObject opponentPrefab = DetermineOpponentPrefab(ball);
-            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.1f, 0.9f)), opponentPrefab);
+            InstantiateBallAtPosition(Vector3.Lerp(playerPosition, opponentPosition, Random.Range(0.3f, 0.8f)), opponentPrefab);
             
 
 
@@ -79,7 +79,17 @@ public class ColliderManager : MonoBehaviour
                 // Make new ball don't follow any player
                 rollingBallScript.target = null;
                 // Scale is 1
-                rollingBallScript.transform.localScale = Vector3.one;
+                rollingBallScript.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+                // Set ball color based on prefab
+                if (prefab == snowballPrefab)
+                {
+                    rollingBallScript.ballColor = 1; // Snowball color
+                }
+                else if (prefab == lavaballPrefab)
+                {
+                    rollingBallScript.ballColor = 2; // Lavaball color
+                }
             }
 
             Rigidbody rb = newBall.GetComponent<Rigidbody>();
