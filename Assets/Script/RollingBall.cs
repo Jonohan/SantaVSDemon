@@ -37,6 +37,11 @@ public class RollingBall : MonoBehaviour
 
     void Update()
     {
+        if (transform.localScale.x <= 0.5f)
+        {
+            Destroy(gameObject);
+        }
+
         Vector3 currentPosition = transform.position;
         currentPosition.y = 0.5f;
 
@@ -84,6 +89,7 @@ public class RollingBall : MonoBehaviour
     // Release ball
     public void ReleaseBall()
     {
+        rb.isKinematic = false;
         isPickedUp = false;
 
         // Push the ball in the opposite direction from the player's line

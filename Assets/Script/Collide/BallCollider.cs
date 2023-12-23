@@ -50,9 +50,9 @@ public class BallCollider : MonoBehaviour
 
                 Destroy(explosionInstance, 2f);
 
-                //ballCollideWithWall();
-
                 ballCollideWithWall();
+
+                ballCollideWithBall(collision);
 
             }
         }  
@@ -64,21 +64,12 @@ public class BallCollider : MonoBehaviour
         isBallFree = isFree;
     }
 
-    /*    public void ballCollideWithWall()
-        {
-            if (isBallFree)
-            {
-                GetComponent<RollingBall>().color(5);
-                gameObject.SetActive(false);
-            }
-        }*/
-
     public void ballCollideWithWall()
     {
         if (isBallFree)
         {
             GetComponent<RollingBall>().color(10);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
@@ -86,15 +77,18 @@ public class BallCollider : MonoBehaviour
     {
         if (isBallFree) 
         {
-            if (ball.gameObject.GetComponent<BallCollider>().isBallFree)
-            {
-                ball.gameObject.SetActive(false);
-                gameObject.SetActive(false);
-            } else
-            {
-                GetComponent<RollingBall>().color(10);
-                gameObject.SetActive(false);
-                ball.gameObject.GetComponent<RollingBall>().ballShrink(2);
+            if (ball.gameObject != null && ball.gameObject.GetComponent<BallCollider>() != null)
+            { 
+                if (ball.gameObject.GetComponent<BallCollider>().isBallFree)
+                {
+                    Destroy(ball.gameObject);
+                    Destroy(gameObject);
+                } else
+                {
+                    GetComponent<RollingBall>().color(10);
+                    Destroy(gameObject);
+                    ball.gameObject.GetComponent<RollingBall>().ballShrink(2);
+                }
             }
         }
     }
