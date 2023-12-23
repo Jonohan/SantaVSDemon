@@ -114,11 +114,6 @@ public class RollingBall : MonoBehaviour
         }
     }
 
-    public void ballShrink(int level)
-    {
-        transform.localScale /= level;
-    }
-
     public void PickUp(Transform playerTransform)
     {
         target = playerTransform;
