@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (gameObject.tag == "Player2" && Input.GetKeyDown(KeyCode.RightControl))
+        if (gameObject.tag == "Player2" && (Input.GetKeyDown(KeyCode.Period)|| Input.GetKeyDown(KeyCode.Keypad0)))
         {
 
             if (isPlayer2Snowball && ballScript != null)
