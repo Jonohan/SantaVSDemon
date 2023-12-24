@@ -5919,18 +5919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4726178877425287910, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNextNewLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 5089860312665477961, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: next
-      value: 
-      objectReference: {fileID: 717097547}
     - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: ground
       value: 
@@ -5951,11 +5943,6 @@ PrefabInstance:
 --- !u!224 &717097546 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2991514113593083532, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-  m_PrefabInstance: {fileID: 717097545}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &717097547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9165094773898097142, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
   m_PrefabInstance: {fileID: 717097545}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &726033454

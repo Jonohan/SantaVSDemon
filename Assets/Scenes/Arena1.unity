@@ -215,14 +215,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5742333632471896983, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 5742333632471896983, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: ground
       value: 
@@ -235,13 +227,9 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 1506255994}
-    - target: {fileID: 8294240991041454103, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -71
-      objectReference: {fileID: 0}
-    - target: {fileID: 8294240991041454103, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3
+    - target: {fileID: 7523310083897137016, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
