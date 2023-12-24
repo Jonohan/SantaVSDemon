@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeRemain = 180f; //Level time (sec)
+        timeRemain = 10f; //Level time (sec)
         countdown = 2.9f;
         prevTime = Time.time;
         //InputSystem.DisableDevice(Keyboard.current);
@@ -109,9 +109,9 @@ public class Timer : MonoBehaviour
 
     private string percToString(float perc) {
         if (perc < 10) {
-            return "0"+((int) perc).ToString()+"%";
+            return "0"+Mathf.Round(perc).ToString()+"%";
         } else {
-            return ((int) perc).ToString()+"%";
+            return Mathf.Round(perc).ToString()+"%";
         }
     }
 

@@ -92,7 +92,8 @@ public class ground : MonoBehaviour
 
     public float redPerc()
     {
-        int red = 0;
+        float red = 0;
+        int total = 0;
         for (int i = 0; i < gridlen; i++)
         {
             for (int j = 0; j < gridlen; j++)
@@ -100,16 +101,21 @@ public class ground : MonoBehaviour
                 if (colorgrid[i][j] == 2)
                 {
                     red++;
+                    total++;
+                } else if (colorgrid[i][j] == 1) {
+                    total++;
                 }
             }
         }
-        Debug.Log(red);
+        //Debug.Log(red);
         return 100*red/(gridlen*gridlen);
+        //return 100*red/total;
     }
 
     public float bluePerc()
     {
-        int blue = 0;
+        float blue = 0;
+        int total = 0;
         for (int i = 0; i < gridlen; i++)
         {
             for (int j = 0; j < gridlen; j++)
@@ -117,10 +123,14 @@ public class ground : MonoBehaviour
                 if (colorgrid[i][j] == 1)
                 {
                     blue++;
+                    total++;
+                } else if (colorgrid[i][j] == 2) {
+                    total++;
                 }
             }
         }
-        Debug.Log(blue);
+        //Debug.Log(blue);
         return 100*blue/(gridlen*gridlen);
+        //return 100*blue/total;
     }
 }
