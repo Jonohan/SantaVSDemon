@@ -9,7 +9,7 @@ public class RollingBall : MonoBehaviour
     private GameObject targetGameObject;// use to track the target
 
     public int ballColor;
-    private Vector3 initialOffset = new Vector3(0, -0.5f, 1.2f);
+    private Vector3 initialOffset = new Vector3(0, 0f, 1.2f);
     public float initialRotationSpeed = 100.0f;
     private float growthRate = 0.03f;
     private float shrinkRate = 0.01f;
