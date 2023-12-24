@@ -10410,6 +10410,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 35088080}
     m_Modifications:
+    - target: {fileID: 414579250077896313, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 414579250077896313, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.5395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484711908951596060, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111667709989987470, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_text
+      value: The end
+      objectReference: {fileID: 0}
     - target: {fileID: 2991514113593083532, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10489,6 +10505,10 @@ PrefabInstance:
     - target: {fileID: 2991514113593083532, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726178877425287910, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadFinal
       objectReference: {fileID: 0}
     - target: {fileID: 5089860312665477961, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: m_Name
