@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ClicktoNextScene : MonoBehaviour
+public class ToMenus : MonoBehaviour
 {
     public void LoadScene()
     {
-
         SceneManager.LoadScene(2);
-
+        Debug.Log("t");
     }
 }
-
