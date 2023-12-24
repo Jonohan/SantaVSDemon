@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeRemain = 5f;
+        timeRemain = 180f; //Level time (sec)
         countdown = 2.9f;
         prevTime = Time.time;
         //InputSystem.DisableDevice(Keyboard.current);
