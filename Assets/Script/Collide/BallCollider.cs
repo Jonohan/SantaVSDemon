@@ -8,6 +8,8 @@ public class BallCollider : MonoBehaviour
     public delegate void CollisionAction(GameObject ball, GameObject Player, GameObject opponent, Collider other, bool isBallFree);
     public static event CollisionAction OnCollision;
 
+    public bool colliding;
+
     [Header("Player disable Variables")]
     public GameObject Player;
     public GameObject opponentPlayer;
@@ -28,6 +30,7 @@ public class BallCollider : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        colliding = true;
         // isBallFree: Player push the ball, no one control this ball
         if (isBallFree)
         {
@@ -50,16 +53,24 @@ public class BallCollider : MonoBehaviour
 
                 Destroy(explosionInstance, 2f);
 
-                ballCollideWithWall();
-
-                ballCollideWithBall(collision);
-
             }
-        }  
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            ballCollideWithWall();
+        } else if (collision.gameObject.tag == "SnowBall" || collision.gameObject.tag == "LavaBall")
+        {
+            ballCollideWithBall(collision);
+        }
     }
 
-    // Set ball free
-    public void SetBallFree(bool isFree)
+    void OnCollisionExit(Collision collision)
+    {
+        colliding = false;
+    }
+
+        // Set ball free
+        public void SetBallFree(bool isFree)
     {
         isBallFree = isFree;
     }

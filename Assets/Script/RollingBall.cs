@@ -132,12 +132,27 @@ public class RollingBall : MonoBehaviour
         //Debug.Log("color" + ballColor.ToString() + " " + sizechange.ToString());
         if (sizechange > 0)
         {
-            if (transform.localScale.x > 0.3) transform.localScale = transform.localScale - Vector3.one * shrinkRate;
+            resize(-shrinkRate);
         }
         else if (sizechange < -0.95f)
         {
-            if (transform.localScale.x < 3) transform.localScale = transform.localScale + Vector3.one * growthRate;
+            resize(growthRate);
         }
+    }
+
+    public void resize(float rate)
+    {
+        if (!GetComponent<BallCollider>().colliding)
+        {
+            if (rate < 0)
+            {
+                if (transform.localScale.x > 0.3) transform.localScale = transform.localScale + Vector3.one * rate;
+            } else
+            {
+                if (transform.localScale.x < 3) transform.localScale = transform.localScale + Vector3.one * rate;
+            }
+        }
+        
     }
 
     public void PickUp(Transform playerTransform)

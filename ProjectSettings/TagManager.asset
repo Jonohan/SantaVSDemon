@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - LavaBall
   - SnowBall
+  - Wall
   layers:
   - Default
   - TransparentFX
