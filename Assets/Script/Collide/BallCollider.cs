@@ -30,8 +30,9 @@ public class BallCollider : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        
+
         // isBallFree: Player push the ball, no one control this ball
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag != "Ground")
         {
             colliding = true;
@@ -56,13 +57,10 @@ public class BallCollider : MonoBehaviour
                 mainModule.startSize = new ParticleSystem.MinMaxCurve(1.5f* ballScale); 
 
                 Destroy(explosionInstance, 2f);
-
+                ballCollideWithWall();
             }
         }
-        if (collision.gameObject.tag == "Wall")
-        {
-            ballCollideWithWall();
-        } else if (collision.gameObject.tag == "SnowBall" || collision.gameObject.tag == "LavaBall")
+        if (collision.gameObject.tag == "SnowBall" || collision.gameObject.tag == "LavaBall")
         {
             ballCollideWithBall(collision);
         }
