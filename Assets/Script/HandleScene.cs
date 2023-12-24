@@ -7,12 +7,15 @@ public static class HandleScene
     private static int levelCount = 7;
     //private static int firstLevel = 2;
     private static bool isPaused = false;
+    public static int levelPlayed = 0;
 
     private static float startTime;
     private static float timePeriod = 0f;
 
     public static int redWins;
     public static int blueWins;
+
+    public static int[] played = {0, 0, 0};
 
 
     public static void RestartGame()
@@ -43,10 +46,50 @@ public static class HandleScene
         // stop timer and event collection cannot be put into if sentence like load prev level
         // because when the final level is finished, it also need to call this function for stop timer
         //StopTimer();
+
         if (LevelNumber() < levelCount)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
+        }
+
+        //StartTimer();
+
+    }
+
+    public static void LoadNextNewLevel()
+    {
+        // stop timer and event collection cannot be put into if sentence like load prev level
+        // because when the final level is finished, it also need to call this function for stop timer
+        //StopTimer();
+        int numToPlay = 3;
+        played[SceneManager.GetActiveScene().buildIndex - 3] = 1;
+        Debug.Log(played[0]);
+        Debug.Log(played[1]);
+        Debug.Log(played[2]);
+        if (levelPlayed == numToPlay) {
+            if (redWins <= blueWins)
+            {
+                LoadLevelNumber(6);
+                
+            } else
+            {
+                LoadLevelNumber(7);
+            }
+            //redWins = 0;
+            //blueWins = 0;
+        } 
+        else if (LevelNumber() < levelCount)
+        {
+            for (int i = 0; i<numToPlay; i++) {
+                Debug.Log(i);
+                if (played[i] == 0) {
+                    Debug.Log(i+3);
+                    LoadLevelNumber(i+3);
+                    break;
+                }
+
+            }
         }
 
         //StartTimer();

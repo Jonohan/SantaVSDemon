@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public GameObject timeText;
     public GameObject countdownText;
     public GameObject endGamePanel;
+    public GameObject next;
     public GameObject winPlayer;
     public GameObject score;
     public GameObject percent;
@@ -103,12 +104,16 @@ public class Timer : MonoBehaviour
             winPlayer.GetComponentInChildren<TMP_Text>().text = "Santa";
             HandleScene.blueWins++;
         }
+        HandleScene.levelPlayed++;
         percent.GetComponentInChildren<TMP_Text>().text = percToString(bluePerc) + " vs " + percToString(redPerc);
         score.GetComponentInChildren<TMP_Text>().text = (HandleScene.blueWins.ToString() + " : "+ HandleScene.redWins.ToString());
+        if (HandleScene.levelPlayed == 3) {
+            next.GetComponentInChildren<TMP_Text>().text = "The End";
+        }
     }
 
     private string percToString(float perc) {
-        if (perc < 10) {
+        if (perc < 9.5) {
             return "0"+Mathf.Round(perc).ToString()+"%";
         } else {
             return Mathf.Round(perc).ToString()+"%";

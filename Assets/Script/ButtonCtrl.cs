@@ -40,15 +40,8 @@ public class ButtonCtrl : MonoBehaviour
         HandleScene.LoadNextLevel();
     }
 
-    public void LoadFinal()
+    public void LoadNextNewLevel()
     {
-        if (HandleScene.redWins <= HandleScene.blueWins)
-        {
-            HandleScene.LoadLevelNumber(6);
-        } else
-        {
-            HandleScene.LoadLevelNumber(7);
-        }
-        
+        HandleScene.LoadNextNewLevel();
     }
 }
