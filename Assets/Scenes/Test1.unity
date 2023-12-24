@@ -1648,6 +1648,7 @@ MonoBehaviour:
   ballScript: {fileID: 960069284}
   isInvincible: 0
   ballPrefab: {fileID: 605142360}
+  active: 0
 --- !u!1001 &1706368656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2061,6 +2062,7 @@ MonoBehaviour:
   ballScript: {fileID: 778373779}
   isInvincible: 0
   ballPrefab: {fileID: 898454450}
+  active: 0
 --- !u!224 &3013442501358137064 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2991514113593083532, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
@@ -2251,6 +2253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 2058234100}
+    - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1506255994}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

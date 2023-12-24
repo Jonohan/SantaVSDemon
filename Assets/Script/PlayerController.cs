@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [Header("Drag prefab from ball pool")]
     public GameObject ballPrefab;
 
+    public bool active;
+
 
 
     // Start is called before the first frame update
@@ -46,13 +48,17 @@ public class PlayerController : MonoBehaviour
     {
         basicmoveSpeed = moveSpeed;
         basicrotateSpeed = rotateSpeed;
+        active = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         isPlayerSnowball();
-        PlayerMove();
+        if (active)
+        {
+            PlayerMove();
+        }
         pLayerReleaseBall();
         CheckBallStatus();
     }

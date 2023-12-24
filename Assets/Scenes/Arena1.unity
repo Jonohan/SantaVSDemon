@@ -243,6 +243,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 2058234100}
+    - target: {fileID: 5821508013590604811, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1506255994}
     - target: {fileID: 8296755536579630870, guid: 3bfe20a7e1f61a041accc7fd591f92cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1922,6 +1930,7 @@ MonoBehaviour:
   ballScript: {fileID: 960069284}
   isInvincible: 0
   ballPrefab: {fileID: 605142360}
+  active: 0
 --- !u!1 &1511163973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,6 +2246,7 @@ MonoBehaviour:
   ballScript: {fileID: 778373779}
   isInvincible: 0
   ballPrefab: {fileID: 898454450}
+  active: 0
 --- !u!1001 &4087746615641513138
 PrefabInstance:
   m_ObjectHideFlags: 0
