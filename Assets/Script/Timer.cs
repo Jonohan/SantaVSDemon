@@ -28,8 +28,8 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeRemain = 10f; //Level time (sec)
-        timeText.GetComponentInChildren<TMP_Text>().text = "03:00";
+        timeRemain = 120f; //Level time (sec)
+        timeText.GetComponentInChildren<TMP_Text>().text = "02:00";
         countdown = 2.9f;
         prevTime = Time.time;
         //InputSystem.DisableDevice(Keyboard.current);
