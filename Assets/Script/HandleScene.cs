@@ -64,9 +64,6 @@ public static class HandleScene
         //StopTimer();
         int numToPlay = 3;
         played[SceneManager.GetActiveScene().buildIndex - 3] = 1;
-        Debug.Log(played[0]);
-        Debug.Log(played[1]);
-        Debug.Log(played[2]);
         if (levelPlayed == numToPlay) {
             if (redWins <= blueWins)
             {
@@ -78,6 +75,9 @@ public static class HandleScene
             }
             redWins = 0;
             blueWins = 0;
+            played[0] = 0;
+            played[1] = 0;
+            played[2] = 0;
         } 
         else if (LevelNumber() < levelCount)
         {
