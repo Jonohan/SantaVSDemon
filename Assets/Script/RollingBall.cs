@@ -123,7 +123,7 @@ public class RollingBall : MonoBehaviour
     {
         // Size change
         // transform.localScale = initialScale + Vector3.one * growthRate * Time.time;
-        float sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), radius * (transform.localScale.x), ballColor);
+        float sizechange = ground.GetComponent<ground>().color((int)(10 * (transform.position.x + 15)), (int)(10 * (transform.position.z + 15)), 2*radius * (transform.localScale.x), ballColor);
         colormesh.GetComponent<colormesh>().color((int)(6 * (transform.position.x + 15)), (int)(6 * (transform.position.z + 15)), radius * (transform.localScale.x));
         oppocolor.GetComponent<colormesh>().remove((int)(6 * (transform.position.x + 15)), (int)(6 * (transform.position.z + 15)), radius * (transform.localScale.x));
 

@@ -103,12 +103,12 @@ public class ground : MonoBehaviour
                 }
             }
         }
-        return red;
+        Debug.Log(red);
+        return 100*red/(gridlen*gridlen);
     }
 
     public float bluePerc()
     {
-        int red = 0;
         int blue = 0;
         for (int i = 0; i < gridlen; i++)
         {
@@ -118,12 +118,9 @@ public class ground : MonoBehaviour
                 {
                     blue++;
                 }
-                else if (colorgrid[i][j] == 2)
-                {
-                    red++;
-                }
             }
         }
-        return red;
+        Debug.Log(blue);
+        return 100*blue/(gridlen*gridlen);
     }
 }

@@ -35,4 +35,8 @@ public class ButtonCtrl : MonoBehaviour
     {
         HandleScene.ResumeGame();
     }
+
+    public void LoadNextLevel(){
+        HandleScene.LoadNextLevel();
+    }
 }

@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     [Header("Drag prefab from ball pool")]
     public GameObject ballPrefab;
 
-    public bool active;
+    public bool active = true;
 
 
 
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         basicmoveSpeed = moveSpeed;
         basicrotateSpeed = rotateSpeed;
-        active = true;
+        //active = true;
     }
 
     // Update is called once per frame
