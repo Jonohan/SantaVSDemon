@@ -76,8 +76,8 @@ public static class HandleScene
             {
                 LoadLevelNumber(7);
             }
-            //redWins = 0;
-            //blueWins = 0;
+            redWins = 0;
+            blueWins = 0;
         } 
         else if (LevelNumber() < levelCount)
         {
