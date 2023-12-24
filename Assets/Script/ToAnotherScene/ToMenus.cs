@@ -8,6 +8,5 @@ public class ToMenus : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(2);
-        Debug.Log("t");
     }
 }
