@@ -17672,6 +17672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_Long_Grey
       objectReference: {fileID: 0}
+    - target: {fileID: 41797328507661115, guid: 7e88c62cb6dcda54d9fa3c98612323b3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3949419009490065704, guid: 7e88c62cb6dcda54d9fa3c98612323b3, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -17781,6 +17785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_Long_Brown
       objectReference: {fileID: 0}
+    - target: {fileID: 7781073120727366061, guid: 11cd512ddc5c4b34dbad7d1d7dcf5be9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17797,6 +17805,10 @@ PrefabInstance:
     - target: {fileID: 5706399465520321329, guid: 2977eca0beff2e24783551b940510de0, type: 3}
       propertyPath: m_Name
       value: Barrel3_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706399465520321329, guid: 2977eca0beff2e24783551b940510de0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8748925950928331042, guid: 2977eca0beff2e24783551b940510de0, type: 3}
       propertyPath: m_LocalScale.x
@@ -17906,6 +17918,10 @@ PrefabInstance:
     - target: {fileID: 3874059959905230464, guid: d6b78cbab5be21d408a00dc8108f95d2, type: 3}
       propertyPath: m_Name
       value: Ore1_Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874059959905230464, guid: d6b78cbab5be21d408a00dc8108f95d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18130,6 +18146,10 @@ PrefabInstance:
     - target: {fileID: 7493275911383358101, guid: dc50eb55a89bd624a97aae3c144f867e, type: 3}
       propertyPath: m_Name
       value: Plier
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493275911383358101, guid: dc50eb55a89bd624a97aae3c144f867e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

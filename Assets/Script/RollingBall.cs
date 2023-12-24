@@ -142,6 +142,7 @@ public class RollingBall : MonoBehaviour
 
     public void resize(float rate)
     {
+        //Debug.Log(GetComponent<BallCollider>().colliding);
         if (!GetComponent<BallCollider>().colliding)
         {
             if (rate < 0)
