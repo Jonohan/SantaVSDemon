@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timeRemain = 10f; //Level time (sec)
+        timeText.GetComponentInChildren<TMP_Text>().text = "03:00";
         countdown = 2.9f;
         prevTime = Time.time;
         //InputSystem.DisableDevice(Keyboard.current);
@@ -58,7 +59,6 @@ public class Timer : MonoBehaviour
                     player2.GetComponent<PlayerController>().active = true;
                     countdownText.SetActive(false);
                 }
-                timeText.GetComponentInChildren<TMP_Text>().text = "03:00";
             } else {
                 timeRemain -= curTime - prevTime;
                 int minutes = (int)(timeRemain / 60f);
