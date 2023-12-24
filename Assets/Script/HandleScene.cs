@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public static class HandleScene
 {
-    private static int levelCount = 5;
+    private static int levelCount = 7;
     //private static int firstLevel = 2;
     private static bool isPaused = false;
 
