@@ -26,8 +26,7 @@ public class StarttoIntro : MonoBehaviour
             Camera.main.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
             if (t >= 0.5f)
             {
-                // 插值计算当前旋转
-                Camera.main.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, (t - 0.5f) * 2); // t-0.5f 确保从 0 开始，乘以 2 以保持原来的旋转速度
+                Camera.main.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, (t - 0.5f) * 2); 
             }
             yield return null;
         }
@@ -35,7 +34,7 @@ public class StarttoIntro : MonoBehaviour
         Camera.main.transform.position = targetPosition;
         Camera.main.transform.rotation = targetRotation;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(1);
     }
